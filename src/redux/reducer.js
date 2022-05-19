@@ -6,11 +6,15 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_LIST:
+    case ADD_LIST:      
       return {
         todoList: [
           ...state.todoList,
-          { id: state.todoList.length + 1, value: action.value },
+          {
+            id: state.todoList.length + 1,
+            value: action.payload.value,
+            date: new Date(action.payload.selectedDate).toISOString(),
+          },
         ],
       };
 
